@@ -1,8 +1,3 @@
-Project/Sport1_New_UART_lib.dep
-Project/Sport1_New_UART_lib.ewd
-Project/Sport1_New_UART_lib.ewp
-Project/Sport1_New_UART_lib.ewt
-Project/Sport1_New_UART_lib.eww
 Project/Debug/Exe/Sport1_New_UART_lib.out
 Project/Debug/Exe/Sport1_New_UART_lib.sim
 Project/Debug/List/Sport1_New_UART_lib.map
@@ -101,13 +96,6 @@ Project/Debug/Obj/systick.pbi.xcl
 Project/Debug/Obj/uart.o
 Project/Debug/Obj/uart.pbi
 Project/Debug/Obj/uart.pbi.xcl
-Project/settings/Sport1_New_UART_lib.crun
-Project/settings/Sport1_New_UART_lib.Debug.cspy.bat
-Project/settings/Sport1_New_UART_lib.Debug.cspy.ps1
-Project/settings/Sport1_New_UART_lib.Debug.driver.xcl
-Project/settings/Sport1_New_UART_lib.Debug.general.xcl
-Project/settings/Sport1_New_UART_lib.dnx
-Project/settings/Sport1_New_UART_lib.wsdt
 .vscode/c_cpp_properties.json
 .vscode/iar-vsc.json
 .vscode/settings.json
