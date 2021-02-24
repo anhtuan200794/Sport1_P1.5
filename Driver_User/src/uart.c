@@ -149,8 +149,7 @@ void USART1_IRQHandler(void)
         }
         else
         {
-            char *temp = &RX_BUF[0];
-            USARTSend(BLUETOOTH_COM, RX_BUF);
+            UART_SendData(BLUETOOTH_COM, (u8*)RX_BUF,RXi);
             clear_RXBuffer();
         }
     }
@@ -172,8 +171,7 @@ void USART3_IRQHandler(void)
         }
         else
         {
-            char *temp = &RX_BUF[0];
-            USARTSend(USB2COM_COM, RX_BUF);
+            UART_SendData(USB2COM_COM, (u8*)RX_BUF,RXi);
             clear_RXBuffer();
         }
     }
@@ -183,4 +181,6 @@ void UART_Init_All(void)
 {
     UART_Init(BLUETOOTH_COM, BAUDRATE, USART_Mode_Tx | USART_Mode_Rx);
     UART_Init(USB2COM_COM, BAUDRATE, USART_Mode_Tx | USART_Mode_Rx);
+    UART_SendData(BLUETOOTH_COM,"AT\r\n",4);
+    UART_SendData(USB2COM_COM, "USB2COM\n",8);
 }
