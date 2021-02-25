@@ -181,6 +181,6 @@ void UART_Init_All(void)
 {
     UART_Init(BLUETOOTH_COM, BAUDRATE, USART_Mode_Tx | USART_Mode_Rx);
     UART_Init(USB2COM_COM, BAUDRATE, USART_Mode_Tx | USART_Mode_Rx);
-    UART_SendData(BLUETOOTH_COM,"AT\r\n",4);
-    UART_SendData(USB2COM_COM, "USB2COM\n",8);
+    UART_SendData(BLUETOOTH_COM,"BT+OK\r\n",7);
+    UART_SendData(USB2COM_COM, "USB2COM+OK\n",11);
 }

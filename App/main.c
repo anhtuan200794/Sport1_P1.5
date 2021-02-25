@@ -35,8 +35,11 @@ int main(void)
     SYSTICK_Init();
     NVIC_Config_Init();
     UART_Init_All();
+    //Delay_ms(1000);
   while(1)
     {
+        // UART_SendData(USB2COM_COM,"AT+HFPDIAL=0349423123\r\n",23);
+        // Delay_ms(3000);
         // BLUETOOTH_Proc();
         // POWER_Proc();
         // if(ble_SetLock == 1)
