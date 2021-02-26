@@ -31,7 +31,7 @@ void clear_RXBuffer(void)
 void UART_PinInit(USART_TypeDef *USARTx)
 {
     GPIO_InitTypeDef GPIO_InitStructure;
-    if (USARTx == USB2COM_COM)
+    if (USARTx == BLUETOOTH_COM)
     {
         /*Config USART1 Rx as input floating */
         GPIO_InitStructure.GPIO_Pin = UART1_RxPin;
@@ -43,7 +43,7 @@ void UART_PinInit(USART_TypeDef *USARTx)
         GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
         GPIO_Init(UART1_GPIO, &GPIO_InitStructure);
     }
-    else if (USARTx == BLUETOOTH_COM)
+    else if (USARTx == USB2COM_COM)
     {
         /*Config USART2 Rx as input floating */
         GPIO_InitStructure.GPIO_Pin = UART3_RxPin;
@@ -59,7 +59,7 @@ void UART_PinInit(USART_TypeDef *USARTx)
 
 void UART_ClockInit(USART_TypeDef *USARTx)
 {
-    if (USARTx == USB2COM_COM)
+    if (USARTx == BLUETOOTH_COM)
     {
         /*Enable GPIO clock*/
         RCC_APB2PeriphClockCmd(UART1_GPIO_CLK, ENABLE);
@@ -68,7 +68,7 @@ void UART_ClockInit(USART_TypeDef *USARTx)
         /*Enable UART clock*/
         RCC_APB2PeriphClockCmd(UART1_CLK, ENABLE);
     }
-    else if (USARTx == BLUETOOTH_COM)
+    else if (USARTx == USB2COM_COM)
     {
         /*Enable GPIO clock*/
         RCC_APB2PeriphClockCmd(UART3_GPIO_CLK, ENABLE);
@@ -136,28 +136,6 @@ void USART1_IRQHandler(void)
 {
     if ((USART1->SR & USART_FLAG_RXNE) != (u16)RESET)
     {
-        RXc = USART_ReceiveData(USB2COM_COM);
-        RX_BUF[RXi] = RXc;
-        RXi++;
-
-        if (RXc != 0x0A)
-        { // End of AT message
-            if (RXi > RX_BUF_SIZE - 1)
-            {
-                clear_RXBuffer();
-            }
-        }
-        else
-        {
-            UART_SendData(BLUETOOTH_COM, (u8*)RX_BUF,RXi);
-            clear_RXBuffer();
-        }
-    }
-}
-void USART3_IRQHandler(void)
-{
-    if ((USART3->SR & USART_FLAG_RXNE) != (u16)RESET)
-    {
         RXc = USART_ReceiveData(BLUETOOTH_COM);
         RX_BUF[RXi] = RXc;
         RXi++;
@@ -172,6 +150,28 @@ void USART3_IRQHandler(void)
         else
         {
             UART_SendData(USB2COM_COM, (u8*)RX_BUF,RXi);
+            clear_RXBuffer();
+        }
+    }
+}
+void USART3_IRQHandler(void)
+{
+    if ((USART3->SR & USART_FLAG_RXNE) != (u16)RESET)
+    {
+        RXc = USART_ReceiveData(USB2COM_COM);
+        RX_BUF[RXi] = RXc;
+        RXi++;
+
+        if (RXc != 0x0A)
+        { // End of AT message
+            if (RXi > RX_BUF_SIZE - 1)
+            {
+                clear_RXBuffer();
+            }
+        }
+        else
+        {
+            UART_SendData(BLUETOOTH_COM, (u8*)RX_BUF,RXi);
             clear_RXBuffer();
         }
     }

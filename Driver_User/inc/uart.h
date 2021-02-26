@@ -17,8 +17,8 @@
 /******************************************************************************/
 /*                              DEFINE                                        */
 /******************************************************************************/
-#define BLUETOOTH_COM        USART3
-#define USB2COM_COM          USART1
+#define BLUETOOTH_COM        USART1
+#define USB2COM_COM          USART3
 #define BAUDRATE             115200
 #define RX_BUF_SIZE          100
 

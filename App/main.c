@@ -18,6 +18,7 @@
 #include "stm32f10x_usart.h"
 #include "systick.h"
 #include "uart.h"
+#include "gpio.h"
 
 /******************************************************************************/
 /*                          PRIVATE FUNCTIONS DECLERATION                     */
@@ -35,9 +36,10 @@ int main(void)
     SYSTICK_Init();
     NVIC_Config_Init();
     UART_Init_All();
-    //Delay_ms(1000);
+    GPIO_CHECK_PIN_Init();
   while(1)
     {
+      GPIO_CHECK_PIN_PROC();
         // UART_SendData(USB2COM_COM,"AT+HFPDIAL=0349423123\r\n",23);
         // Delay_ms(3000);
         // BLUETOOTH_Proc();

@@ -56,5 +56,8 @@ void Delay_ms(uint32_t Time_ms)
 void Delay_us(uint32_t Time_us)
 {
     Tick = 0;
-    while(Tick < Time_us);
+    while(Tick < Time_us)
+    {
+        Time_us--;
+    }
 }

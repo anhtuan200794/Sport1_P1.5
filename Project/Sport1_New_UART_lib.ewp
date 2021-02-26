@@ -2282,6 +2282,9 @@
                 <name>$PROJ_DIR$\..\Driver_User\inc\delay.h</name>
             </file>
             <file>
+                <name>$PROJ_DIR$\..\Driver_User\inc\gpio.h</name>
+            </file>
+            <file>
                 <name>$PROJ_DIR$\..\Driver_User\inc\nvic.h</name>
             </file>
             <file>
@@ -2298,6 +2301,9 @@
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Driver_User\src\delay.c</name>
+            </file>
+            <file>
+                <name>$PROJ_DIR$\..\Driver_User\src\gpio.c</name>
             </file>
             <file>
                 <name>$PROJ_DIR$\..\Driver_User\src\nvic.c</name>

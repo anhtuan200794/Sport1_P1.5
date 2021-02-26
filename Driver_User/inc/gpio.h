@@ -26,9 +26,9 @@
 /*                              FUNCTION                                      */
 /******************************************************************************/
 
-void GPIO_Init(void);
+void GPIO_CHECK_PIN_Init(void);
 
-uint8_t GPIO_GET_STATUS(void);
+void GPIO_CHECK_PIN_PROC(void);
 
 
 #endif /*_GPIO_H_*/
