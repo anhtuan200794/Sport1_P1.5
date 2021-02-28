@@ -34,7 +34,7 @@ int main(void)
 {
     SystemInit();
     SYSTICK_Init();
-    NVIC_Config_Init();
+    NVIC_Config_Init2();
     UART_Init_All();
     GPIO_CHECK_PIN_Init();
   while(1)

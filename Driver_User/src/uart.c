@@ -137,21 +137,7 @@ void USART1_IRQHandler(void)
     if ((USART1->SR & USART_FLAG_RXNE) != (u16)RESET)
     {
         RXc = USART_ReceiveData(BLUETOOTH_COM);
-        RX_BUF[RXi] = RXc;
-        RXi++;
-
-        if (RXc != 0x0A)
-        { // End of AT message
-            if (RXi > RX_BUF_SIZE - 1)
-            {
-                clear_RXBuffer();
-            }
-        }
-        else
-        {
-            UART_SendData(USB2COM_COM, (u8*)RX_BUF,RXi);
-            clear_RXBuffer();
-        }
+        USART_SendData(USB2COM_COM,RXc);
     }
 }
 void USART3_IRQHandler(void)
@@ -159,21 +145,7 @@ void USART3_IRQHandler(void)
     if ((USART3->SR & USART_FLAG_RXNE) != (u16)RESET)
     {
         RXc = USART_ReceiveData(USB2COM_COM);
-        RX_BUF[RXi] = RXc;
-        RXi++;
-
-        if (RXc != 0x0A)
-        { // End of AT message
-            if (RXi > RX_BUF_SIZE - 1)
-            {
-                clear_RXBuffer();
-            }
-        }
-        else
-        {
-            UART_SendData(BLUETOOTH_COM, (u8*)RX_BUF,RXi);
-            clear_RXBuffer();
-        }
+        USART_SendData(BLUETOOTH_COM,RXc);
     }
 }
 

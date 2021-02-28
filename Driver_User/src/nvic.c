@@ -14,7 +14,7 @@
  * @brief functions config init.
  *
  */
-void NVIC_Config_Init(void)
+void NVIC_Config_Init2(void)
 {
     NVIC_InitTypeDef NVIC_InitStructure;
 
